@@ -1,7 +1,10 @@
-import { Text, View } from "react-native";
-import Home from "./home/Home";
+import Home from "./home";
+import { View } from "react-native";
+
 export default function Index() {
   return (
-    <Home />
+    <View>
+      <Home />
+    </View>
   );
 }

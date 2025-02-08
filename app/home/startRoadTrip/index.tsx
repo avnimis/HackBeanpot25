@@ -1,8 +1,8 @@
-import React from 'react'
 
+import { Text } from 'react-native';
 function StartRoadTrip() {
   return (
-    <div>startRoadTrip</div>
+    <Text>StartRoadTrip</Text>
   )
 }
 
