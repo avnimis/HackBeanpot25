@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   },
   activeRoadTripContainer: {
     height: "70%",
+    width: "80%",
   },
 });
 
