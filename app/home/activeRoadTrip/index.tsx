@@ -1,7 +1,10 @@
 import { Text } from "react-native";
 
 function ActiveRoadTrip() {
-  return <Text>activeRoadTrip</Text>;
+  return (
+    <Text>My Road Trips</Text>
+    
+  );
 }
 
 export default ActiveRoadTrip;
