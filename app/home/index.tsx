@@ -10,6 +10,9 @@ function Home() {
       <Link href="./home/activeRoadTrip" asChild>
         <Button title="Active Road Trips"/>
       </Link>
+      <Link href="./home/AddNewRoadtrip" asChild>
+        <Button title="Add Road Trips"/>
+      </Link>
     </View>
   );
 }
