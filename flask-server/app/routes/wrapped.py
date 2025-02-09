@@ -5,7 +5,7 @@ import requests
 
 wrapped_bp = Blueprint("wrapped", __name__)
 
-OPENAI_API_KEY = ""
+
 
 @wrapped_bp.route("/<int:trip_id>/wrapped", methods=["POST"])
 def generate_wrapped(trip_id):
