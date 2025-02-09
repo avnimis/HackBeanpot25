@@ -1,5 +1,8 @@
 from flask import Blueprint, jsonify, request
 from app.database import supabase  # Import Supabase client
+from flask_cors import CORS
+
+CORS(stops_bp)  
 
 stops_bp = Blueprint("stops", __name__)
 
