@@ -39,22 +39,15 @@ export default function AddNewRoadTrip() {
                         <View style={styles.dotConnector} />
                     </View>
 
-                    <GooglePlacesAutocomplete
-                        placeholder="Start Location"
-                        minLength={2}
-                        fetchDetails={true}
-                        onPress={(data, details = null) => {
-                            console.log("Selected Location:", data, details);
-                        }}
-                        query={{
-                            key: PLACES_API_KEY, 
-                            language: "en",
-                        }}
-                        onFail={(error) => console.error("GooglePlacesAutocomplete Error:", error)}
-                        onNotFound={() => console.warn("No results found")}
-                        styles={{
-                            textInput: styles.input,
-                        }}
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Start Latitude"
+                        placeholderTextColor="#907F9F"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Start Longitude"
+                        placeholderTextColor="#907F9F"
                     />
                 </View>
 
@@ -62,7 +55,12 @@ export default function AddNewRoadTrip() {
                     <MaterialIcons name="location-on" size={24} style={styles.icon} />
                     <TextInput
                         style={styles.input}
-                        placeholder="End Location"
+                        placeholder="End Latitude"
+                        placeholderTextColor="#907F9F"
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder="End Longitude"
                         placeholderTextColor="#907F9F"
                     />
                 </View>
