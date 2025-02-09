@@ -1,61 +1,44 @@
 import { View, StyleSheet, Text, FlatList } from "react-native";
-import JournalItem from "./JournalItem";
+import JournalItem, { StopData } from "./JournalItem";
 
-
-interface Date {
-    day: number
-    month: number
-    year: number
+interface DaySectionProps {
+  day: number;
+  month: number;
+  year: number;
+  items: StopData[];
 }
 
-
-export default function DaySection(date: Date) {
-
-    const {day, month, year} = date;
-    const dateFormat = {day} + "/" + {month} + "/" + {year}
-    const items  = [
-        {
-            id: 1,
-            name: "string",
-            stars: 3,
-            starttime: 1045,
-            endtime: 1100,
-            image: "url"
-        }
-    ]
-
-    return (
-        <View>
-            <Text> {dateFormat} </Text>
-            <View style={styles.dayUnderline} />
-            <FlatList
-                data={items}
-                renderItem={({ item }) => <JournalItem {...item} />}
-                keyExtractor={(item) => item.id.toString()  }
-            />
-        </View>
-    )
+export default function DaySection({ day, month, year, items }: DaySectionProps) {
+  const dateFormat = `${day}/${month}/${year}`;
+  
+  return (
+    <View style={styles.container}>
+      <Text style={styles.dateText}>{dateFormat}</Text>
+      <View style={styles.dayUnderline} />
+      <FlatList
+        data={items}
+        renderItem={({ item }) => <JournalItem {...item} />}
+        keyExtractor={(item) => item.id.toString()}
+      />
+    </View>
+  );
 }
-
 
 const styles = StyleSheet.create({
-    container: {
-        display: "flex",
-        width: 393,
-        height: 48,
-        paddingTop: 12,
-        paddingRight: 17,
-        paddingBottom: 12,
-        paddingLeft: 17,
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "flex-end",
-        gap: 10
-    },
-    dayUnderline: {
-        height: 1,
-        backgroundColor: '#6D9F71',
-        width: '100%',
-    },
-})
-
+  container: {
+    width: '100%',
+    paddingHorizontal: 17,
+    paddingVertical: 12,
+  },
+  dateText: {
+    fontSize: 16,
+    fontWeight: '500',
+    marginBottom: 8,
+  },
+  dayUnderline: {
+    height: 1,
+    backgroundColor: '#6D9F71',
+    width: '100%',
+    marginBottom: 12,
+  },
+});
