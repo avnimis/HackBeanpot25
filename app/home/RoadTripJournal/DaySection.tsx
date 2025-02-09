@@ -31,6 +31,7 @@ export default function DaySection(date: Date) {
             <FlatList
                 data={items}
                 renderItem={({ item }) => <JournalItem {...item} />}
+                keyExtractor={(item) => item.id.toString()  }
             />
         </View>
     )

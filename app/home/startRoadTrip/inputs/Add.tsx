@@ -53,7 +53,7 @@ function Add({ header, icon, titlePlaceholder }: InputsProps) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
-        <Header navItems={navItems} title={header} />
+        <Header title={header} />
         <View style={styles.titleContainer}>
           <View style={styles.cameraContainer}>
             <FontAwesomeIcon icon={icon} size={40} style={styles.camera} />

@@ -5,9 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 interface HeaderProps {
     title: string;
-    navItems: Array<[string, Href]>;
 }
-function Header({ title, navItems }: HeaderProps) {
+function Header({ title }: HeaderProps) {
+    const navItems: Array<[string, Href]> = [
+      ["Home", "./home"],
+      ["Add Attraction", "./home/startRoadTrip/inputs"],
+      ["Add New Road Trip", "./home/AddNewRoadTrip"],
+      ["Road Trip Journal", "/home/RoadTripJournal"],
+    ];
   return (
     <View style={styles.header}>
           <Text style={styles.headerText}>{title}</Text>
