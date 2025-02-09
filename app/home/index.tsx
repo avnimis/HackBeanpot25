@@ -10,11 +10,20 @@ function Home() {
   ];
   return (
     <View style={styles.container}>
-      <Header title="Road Trip Manager" navItems={navItems} />
+      <Header
+        title="Road Trip Manager"
+        navItems={navItems}
+        colorTheme="#337357"
+      />
       <View style={styles.activeRoadTripContainer}>
         <ActiveRoadTrip />
       </View>
-      <BottomButton text="Add New Road Trip" href="./home/startRoadTrip/inputs" />
+
+      <BottomButton
+        text="Add New Road Trip"
+        href="./home/startRoadTrip/inputs"
+        colorTheme="#337357"
+      />
     </View>
   );
 }
@@ -23,10 +32,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFF",
     height: "100%",
-    display: "flex",
     alignItems: "center",
-    justifyContent: "space-between"
   },
+
   activeRoadTripContainer: {
     height: "70%",
     width: "80%",

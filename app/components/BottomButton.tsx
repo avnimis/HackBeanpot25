@@ -5,13 +5,14 @@ interface BottomButtonProps {
     text?: string;
     href?: Href;
     onPress?: () => void;
+    colorTheme?: string;
 }
 
-function BottomButton({ text, href, onPress }: BottomButtonProps) {
+function BottomButton({ text, href, onPress, colorTheme }: BottomButtonProps) {
     if (href && onPress) {
         return (
         <Link href={href} asChild>
-            <Pressable style={styles.buttonContainer} onPress={onPress}>
+            <Pressable style={[styles.buttonContainer, {backgroundColor: colorTheme}]} onPress={onPress}>
                 <Text style={styles.text}>{text}</Text>
             </Pressable>
         </Link>
@@ -19,14 +20,14 @@ function BottomButton({ text, href, onPress }: BottomButtonProps) {
     } else if (href){
         return (
             <Link href={href} asChild>
-                <Pressable style={styles.buttonContainer}>
+                <Pressable style={[styles.buttonContainer, {backgroundColor: colorTheme}]}>
                     <Text style={styles.text}>{text}</Text>
                 </Pressable>
             </Link>
         )
     } else {
         return (
-            <Pressable style={styles.buttonContainer} onPress={onPress}>
+            <Pressable style={[styles.buttonContainer, {backgroundColor: colorTheme}]} onPress={onPress}>
                 <Text style={styles.text}>{text}</Text>
             </Pressable>
         )
@@ -42,7 +43,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 40,
-    backgroundColor: "#337357",
     marginBottom: 40,
   },
   text: {

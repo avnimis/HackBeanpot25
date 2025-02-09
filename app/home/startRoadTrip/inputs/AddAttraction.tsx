@@ -6,6 +6,7 @@ function AddAttraction() {
         titlePlaceholder="Attraction Title"
         header="Add Attraction"
         icon={faCamera}
+        colorTheme="#7C6095"
       />
     );
 }

@@ -6,6 +6,7 @@ function AddRestaurant() {
       icon={faUtensils}
       header="Add Restaurant"
       titlePlaceholder="Restaurant Name"
+      colorTheme="#3D61A4"
     />
   );
 }

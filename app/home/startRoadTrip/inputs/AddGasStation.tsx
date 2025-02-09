@@ -5,7 +5,8 @@ function AddGasStation() {
     <Add
       icon={faGasPump}
       header="Add Gas Station"
-      titlePlaceholder="Gas Station Name"
+          titlePlaceholder="Gas Station Name"
+          colorTheme="#C36337"
     />
   );
 }

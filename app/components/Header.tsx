@@ -6,10 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 interface HeaderProps {
     title: string;
     navItems: Array<[string, Href]>;
+    colorTheme?: string;
 }
-function Header({ title, navItems }: HeaderProps) {
+function Header({ title, navItems, colorTheme }: HeaderProps) {
   return (
-    <View style={styles.header}>
+      <View style={[styles.header, { backgroundColor: colorTheme }]}>
           <Text style={styles.headerText}>{title}</Text>
           <Pressable style={styles.backButton} onPress={() => { router.canGoBack() ? router.back() : console.log("No valid stack history.") }}>
               <FontAwesomeIcon icon={faArrowLeft} size={24} color="#FFF" />
@@ -32,7 +33,6 @@ const styles = StyleSheet.create({
   header: {
     justifyContent: "flex-end",
     alignItems: "center",
-    backgroundColor: "#337357",
     height: "15%",
     width: "100%",
   },

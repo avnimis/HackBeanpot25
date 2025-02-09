@@ -20,15 +20,17 @@ interface InputsProps {
   header: string;
   icon: IconProp;
   titlePlaceholder: string;
+  colorTheme: string;
 }
 
 export type InputData = {
   title: string;
   description: string;
-  image: string;
+    image: string;
+  
 };
 
-function Add({ header, icon, titlePlaceholder }: InputsProps) {
+function Add({ header, icon, titlePlaceholder, colorTheme }: InputsProps) {
   const [input, setInput] = useState("");
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
@@ -53,9 +55,9 @@ function Add({ header, icon, titlePlaceholder }: InputsProps) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
-        <Header navItems={navItems} title={header} />
+              <Header navItems={navItems} title={header} colorTheme={colorTheme} />
         <View style={styles.titleContainer}>
-          <View style={styles.cameraContainer}>
+          <View style={[styles.cameraContainer, {backgroundColor: colorTheme}]}>
             <FontAwesomeIcon icon={icon} size={40} style={styles.camera} />
           </View>
 
@@ -83,7 +85,7 @@ function Add({ header, icon, titlePlaceholder }: InputsProps) {
           multiline
         />
 
-        <BottomButton text="Add" onPress={add} />
+        <BottomButton text="Add" onPress={add} colorTheme={colorTheme} href="./home/startRoadTrip/inputs" />
       </View>
     </TouchableWithoutFeedback>
   );

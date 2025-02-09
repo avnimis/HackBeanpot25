@@ -13,7 +13,7 @@ function Inputs() {
   ]
   return (
     <View style={styles.container}>
-      <Header title="Add" navItems={navItems} />
+      <Header title="Add" navItems={navItems} colorTheme="#337357" />
       <FlatList
         style={styles.List}
         data={addComponents}
