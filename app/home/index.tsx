@@ -1,20 +1,20 @@
-import { Text, View, Button, StyleSheet, Pressable } from "react-native";
+import { Text, View, StyleSheet} from "react-native";
 import ActiveRoadTrip from "./activeRoadTrip";
-import { Link } from "expo-router";
+import BottomButton from "../components/BottomButton";
+import Header from "../components/Header";
+import { Href } from "expo-router";
 function Home() {
+  const navItems: Array<[string, Href]> = [
+    ["Home", "./home"],
+    ["Add Attraction", "./home/startRoadTrip/inputs"]
+  ];
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Home</Text>
-      </View>
+      <Header title="Road Trip Manager" navItems={navItems} />
       <View style={styles.activeRoadTripContainer}>
         <ActiveRoadTrip />
       </View>
-      <Link href="./home/startRoadTrip" asChild>
-        <Pressable style={styles.startRoadTripButton}>
-          <Text style={styles.startRoadTripText}>Add New Road Trip</Text>
-        </Pressable>
-      </Link>
+      <BottomButton text="Add New Road Trip" href="./home/startRoadTrip/inputs" />
     </View>
   );
 }
@@ -26,40 +26,6 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between"
-  },
-  header: {
-    justifyContent: "flex-end",
-    alignItems: "center",
-    backgroundColor: "#337357",
-    height: "12.5%",
-    width: "100%",
-  },
-  headerText: {
-    color: "#FFF",
-    fontFamily: "Inter",
-    fontSize: 30,
-    fontStyle: "normal",
-    fontWeight: 400,
-    paddingBottom: 20,
-  },
-  startRoadTripButton: {
-    width: "80%",
-    display: "flex",
-    paddingVertical: 26,
-    paddingHorizontal: 60,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 40,
-    backgroundColor: "#337357",
-    marginBottom: 40,
-  },
-  startRoadTripText: {
-  color: "#FFF",
-  textAlign: "center",
-  fontFamily: "Inter",
-  fontSize: 25,
-  fontStyle: "normal",
-  fontWeight: 400,
   },
   activeRoadTripContainer: {
     height: "70%",

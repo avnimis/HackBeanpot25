@@ -1,14 +1,36 @@
 import { StyleSheet, Pressable, Text } from "react-native";
-import { Link } from "expo-router";
+import { Href, Link } from "expo-router";
 
-function BottomButton(text: string, href: string) {
-  return (
-          <Link href={'./${href}'} asChild>
-            <Pressable style={styles.buttonContainer}>
-              <Text style={styles.text}>{text}</Text>
+interface BottomButtonProps {
+    text?: string;
+    href?: Href;
+    onPress?: () => void;
+}
+
+function BottomButton({ text, href, onPress }: BottomButtonProps) {
+    if (href && onPress) {
+        return (
+        <Link href={href} asChild>
+            <Pressable style={styles.buttonContainer} onPress={onPress}>
+                <Text style={styles.text}>{text}</Text>
             </Pressable>
-          </Link>
-  )
+        </Link>
+        )
+    } else if (href){
+        return (
+            <Link href={href} asChild>
+                <Pressable style={styles.buttonContainer}>
+                    <Text style={styles.text}>{text}</Text>
+                </Pressable>
+            </Link>
+        )
+    } else {
+        return (
+            <Pressable style={styles.buttonContainer} onPress={onPress}>
+                <Text style={styles.text}>{text}</Text>
+            </Pressable>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
