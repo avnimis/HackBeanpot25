@@ -5,7 +5,7 @@ import requests
 
 wrapped_bp = Blueprint("wrapped", __name__)
 
-DEEPSEEK_API_KEY = "Sk-805d4623d030413bb6c093b76be82c0b"
+OPENAI_API_KEY = "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"
 
 @wrapped_bp.route("/<int:trip_id>/wrapped", methods=["POST"])
 def generate_wrapped(trip_id):
@@ -35,11 +35,11 @@ def generate_wrapped(trip_id):
         # Add final leg from last stop to end location
         total_distance += geodesic(previous_coords, end_coords).miles
 
-        # 4️⃣ Generate Trip Summary Sentences (DeepSeek)
+        # 4️⃣ Generate Trip Summary Sentences (OpenAI)
         trip_stats = f"You made {len(stops)} stops on this trip, visited {len(set(stop['category'] for stop in stops))} attractions, and drove {round(total_distance, 1)} miles."
         
-        deepseek_payload = {
-            "model": "deepseek-chat",
+        openai_payload = {
+            "model": "gpt-4",
             "messages": [
                 {"role": "system", "content": "Generate a fun and engaging summary of a road trip."},
                 {"role": "user", "content": f"Trip details: {trip_stats}. Stops: {stops}"}
@@ -47,10 +47,10 @@ def generate_wrapped(trip_id):
             "max_tokens": 200
         }
 
-        deepseek_headers = {"Authorization": f"Bearer {DEEPSEEK_API_KEY}", "Content-Type": "application/json"}
-        deepseek_response = requests.post("https://api.deepseek.com/v1/chat/completions", json=deepseek_payload, headers=deepseek_headers)
-        deepseek_data = deepseek_response.json()
-        generated_summary = deepseek_data.get("choices", [{}])[0].get("message", {}).get("content", "No summary generated.")
+        openai_headers = {"Authorization": f"Bearer {OPENAI_API_KEY}", "Content-Type": "application/json"}
+        openai_response = requests.post("https://api.openai.com/v1/chat/completions", json=openai_payload, headers=openai_headers)
+        openai_data = openai_response.json()
+        generated_summary = openai_data.get("choices", [{}])[0].get("message", {}).get("content", "No summary generated.")
 
         # 5️⃣ Select 4 Highlighted Stops (Include Photo URLs if Available)
         highlighted_stops = []
