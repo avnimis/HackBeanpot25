@@ -11,7 +11,7 @@ function Header({ title, navItems }: HeaderProps) {
   return (
     <View style={styles.header}>
           <Text style={styles.headerText}>{title}</Text>
-          <Pressable style={styles.backButton} onPress={() => router.back()}>
+          <Pressable style={styles.backButton} onPress={() => { router.canGoBack() ? router.back() : console.log("No valid stack history.") }}>
               <FontAwesomeIcon icon={faArrowLeft} size={24} color="#FFF" />
           </Pressable>
       <FlatList
