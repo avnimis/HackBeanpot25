@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "hackbeanpot2025",
-    "slug": "hackbeanpot2025",
+    "slug": "roadtripwrapped",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -12,6 +12,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.hackbeanpot2025.roadtripwrapped",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -36,6 +37,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "132fd01f-3279-494b-8bf7-0b3d64043347"
+      }
+    },
+    "owner": "avnimishra"
   }
 }

@@ -6,15 +6,17 @@ import { Href } from "expo-router";
 function Home() {
   const navItems: Array<[string, Href]> = [
     ["Home", "./home"],
-    ["Add Attraction", "./home/startRoadTrip/inputs"]
+    ["Add Attraction", "./home/startRoadTrip/inputs"],
+    ["Add New Road Trip", "./home/AddNewRoadtrip"],
+    ["Road Trip Journal", "./home/RoadTripJournal"],
   ];
   return (
     <View style={styles.container}>
-      <Header title="Road Trip Manager" navItems={navItems} />
+      <Header title="Road Trip Manager" />
       <View style={styles.activeRoadTripContainer}>
         <ActiveRoadTrip />
       </View>
-      <BottomButton text="Add New Road Trip" href="./home/startRoadTrip/inputs" />
+      <BottomButton text="Add New Road Trip" href="./home/AddNewRoadtrip" />
     </View>
   );
 }
