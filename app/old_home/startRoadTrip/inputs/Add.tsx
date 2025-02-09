@@ -9,12 +9,11 @@ import {
   Keyboard,
 } from "react-native";
 import { Href } from "expo-router";
-import BottomButton from "@/app/components/BottomButton";
+import BottomButton from "@/components/BottomButton";
 import { useState } from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import * as ImagePicker from "expo-image-picker";
-import Header from "@/app/components/Header";
 
 interface InputsProps {
   header: string;
@@ -33,9 +32,7 @@ function Add({ header, icon, titlePlaceholder }: InputsProps) {
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState<string | null>(null);
-    const navItems: Array<[string, Href]> = [
-    ["Home", "/home"],
-] 
+
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
@@ -53,7 +50,6 @@ function Add({ header, icon, titlePlaceholder }: InputsProps) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
-        <Header title={header} />
         <View style={styles.titleContainer}>
           <View style={styles.cameraContainer}>
             <FontAwesomeIcon icon={icon} size={40} style={styles.camera} />

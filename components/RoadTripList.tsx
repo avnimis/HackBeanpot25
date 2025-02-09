@@ -1,5 +1,11 @@
-import { Text, View, FlatList, ActivityIndicator, StyleSheet} from "react-native";
-import React, { useState, useEffect } from 'react';
+import {
+  Text,
+  View,
+  FlatList,
+  ActivityIndicator,
+  StyleSheet,
+} from "react-native";
+import React, { useState, useEffect } from "react";
 import RoadTrip from "./RoadTrip";
 import type { RoadTripData } from "./RoadTrip";
 function ActiveRoadTrip() {
@@ -112,8 +118,8 @@ function ActiveRoadTrip() {
     } finally {
       setLoading(false);
     }
-  }
-  
+  };
+
   useEffect(() => {
     getRoadTrips();
   }, []);
@@ -124,12 +130,14 @@ function ActiveRoadTrip() {
         <Text style={styles.headerText}>My Road Trips</Text>
       </View>
       {isLoading ? (
-        <ActivityIndicator/>
-      ) : ( <FlatList
+        <ActivityIndicator />
+      ) : (
+        <FlatList
           data={roadTripData}
           keyExtractor={({ id }) => id}
-        renderItem={({ item }) => <RoadTrip {...item} />}
-      />)}
+          renderItem={({ item }) => <RoadTrip {...item} />}
+        />
+      )}
     </View>
   );
 }

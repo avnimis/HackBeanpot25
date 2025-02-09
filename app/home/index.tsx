@@ -1,22 +1,32 @@
-import { Text, View, StyleSheet} from "react-native";
-import ActiveRoadTrip from "./activeRoadTrip";
-import BottomButton from "../components/BottomButton";
-import Header from "../components/Header";
-import { Href } from "expo-router";
+import { Text, View, StyleSheet } from "react-native";
+import RoadTripList from "@/components/RoadTripList";
+import CircleButton from "@/components/CircleButton";
+import React, { useEffect } from "react";
+import { useNavigation, Link } from "expo-router";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from "expo-router";
+
 function Home() {
-  const navItems: Array<[string, Href]> = [
-    ["Home", "./home"],
-    ["Add Attraction", "./home/startRoadTrip/inputs"],
-    ["Add New Road Trip", "./home/AddNewRoadTrip"],
-    ["Road Trip Journal", "/home/RoadTripJournal"],
-  ];
+  const router = useRouter();
+  const navigation = useNavigation();
+  useEffect(() => {
+    navigation.setOptions({
+      headerStyle: { backgroundColor: "#337357" },
+      headerTintColor: "#FFFFFF",
+    });
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
-      <Header title="Road Trip Manager" />
       <View style={styles.activeRoadTripContainer}>
-        <ActiveRoadTrip />
+        <RoadTripList />
       </View>
-      <BottomButton text="Add New Road Trip" href="./home/startRoadTrip/inputs" />
+      <View style={styles.buttonContainer}>
+        <CircleButton
+          icon={faPlus}
+          onPress={() => router.push("/home/AddNewRoadTrip")}
+        />
+      </View>
     </View>
   );
 }
@@ -25,13 +35,13 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#FFF",
     height: "100%",
-    display: "flex",
     alignItems: "center",
-    justifyContent: "space-between"
   },
+  buttonContainer: {},
   activeRoadTripContainer: {
-    height: "70%",
+    height: "90%",
     width: "80%",
+    alignSelf: "center",
   },
 });
 

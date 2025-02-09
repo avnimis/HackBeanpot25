@@ -1,10 +1,8 @@
-import Header from "@/app/components/Header";
+
 import { Href, Link } from "expo-router";
 import { View, FlatList, Pressable, Text, StyleSheet } from "react-native";
 function Inputs() {
-  const navItems: Array<[string, Href]> = [
-    ["Home", "/home"]
-  ]
+
   const addComponents = [
     ["Attraction", "AddAttraction"],
     ["Gas Station", "AddGasStation"],
@@ -13,7 +11,6 @@ function Inputs() {
   ]
   return (
     <View style={styles.container}>
-      <Header title="Add"/>
       <FlatList
         style={styles.List}
         data={addComponents}
