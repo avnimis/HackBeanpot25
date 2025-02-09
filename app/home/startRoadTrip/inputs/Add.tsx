@@ -15,6 +15,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import * as ImagePicker from "expo-image-picker";
 import Header from "@/app/components/Header";
+import { MaterialIcons } from "@expo/vector-icons";
 
 interface InputsProps {
   header: string;
@@ -33,9 +34,9 @@ function Add({ header, icon, titlePlaceholder }: InputsProps) {
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState<string | null>(null);
-    const navItems: Array<[string, Href]> = [
+  const navItems: Array<[string, Href]> = [
     ["Home", "/home"],
-] 
+  ]
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
@@ -49,7 +50,7 @@ function Add({ header, icon, titlePlaceholder }: InputsProps) {
     }
   };
 
-  const add = () => {};
+  const add = () => { };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
@@ -67,6 +68,45 @@ function Add({ header, icon, titlePlaceholder }: InputsProps) {
             value={title}
           />
         </View>
+
+        <View style={styles.inputContainer}>
+          <View style={styles.inputRow}>
+            <View style={styles.iconColumn}>
+              <MaterialIcons
+                name="radio-button-unchecked"
+                size={20}
+                style={styles.icon}
+              />
+              <View style={styles.dotConnector} />
+            </View>
+
+            <TextInput
+              style={styles.input}
+              placeholder="Start Latitude"
+              placeholderTextColor="#907F9F"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Start Longitude"
+              placeholderTextColor="#907F9F"
+            />
+          </View>
+
+          <View style={styles.inputRow}>
+            <MaterialIcons name="location-on" size={24} style={styles.icon} />
+            <TextInput
+              style={styles.input}
+              placeholder="End Latitude"
+              placeholderTextColor="#907F9F"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="End Longitude"
+              placeholderTextColor="#907F9F"
+            />
+          </View>
+        </View>
+
         <Pressable style={styles.addImage} onPress={pickImage}>
           {image ? (
             <Image source={{ uri: image }} style={styles.image} />
@@ -150,6 +190,39 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     borderRadius: 10,
+  },
+  inputContainer: {
+    gap: 20,
+    marginBottom: 20,
+  },
+  inputRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    width: '100%', 
+    paddingHorizontal: 10,
+  },
+  iconColumn: {
+    alignItems: 'center',
+    gap: 4,
+  },
+  dotConnector: {
+    width: 1,
+    height: 20,
+    backgroundColor: '#6D9F71',
+  },
+  input: {
+    flex: 1,
+    height: 48,
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
+    borderRadius: 24,
+    paddingHorizontal: 20,
+    fontSize: 16,
+    color: '#666666',
+  },
+  icon: {
+    color: '#6D9F71',
   },
 });
 
